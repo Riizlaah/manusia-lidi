@@ -1,0 +1,190 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfaip0jysvvy2"]
+
+[ext_resource type="FontFile" uid="uid://tprirob8rlhy" path="res://resources/fonts/RobotoMono-Bold.ttf" id="1_f8ii7"]
+[ext_resource type="Script" path="res://script/menu_ui.gd" id="1_slhug"]
+[ext_resource type="FontFile" uid="uid://c0vx5q7rcvmvu" path="res://resources/fonts/RobotoMono-Regular.ttf" id="2_o714a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnc6i"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0823529, 0.580392, 0.184314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avpyf"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0666667, 0.501961, 0.156863, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yvb6"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.858824, 0.0666667, 0.0509804, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6188r"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.705882, 0.0431373, 0.0313726, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Node" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_slhug")
+
+[node name="MCont" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/MCont"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("1_f8ii7")
+theme_override_font_sizes/font_size = 48
+text = "Manusia Lidi"
+vertical_alignment = 1
+
+[node name="Hbox" type="HBoxContainer" parent="CanvasLayer/Control/MCont"]
+custom_minimum_size = Vector2(400, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="play" type="Button" parent="CanvasLayer/Control/MCont/Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_o714a")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_rnc6i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rnc6i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_avpyf")
+toggle_mode = true
+text = "Main"
+
+[node name="quit" type="Button" parent="CanvasLayer/Control/MCont/Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_o714a")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_7yvb6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7yvb6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6188r")
+text = "Keluar"
+
+[node name="PlayMenu" type="ColorRect" parent="CanvasLayer/Control"]
+visible = false
+custom_minimum_size = Vector2(680, 450)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.223529, 0.223529, 0.223529, 1)
+
+[node name="Grid" type="GridContainer" parent="CanvasLayer/Control/PlayMenu"]
+custom_minimum_size = Vector2(600, 370)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -185.0
+offset_right = 300.0
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/PlayMenu/Grid"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_o714a")
+theme_override_font_sizes/font_size = 24
+text = "1 VS Komputer"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control/PlayMenu/Grid"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_o714a")
+theme_override_font_sizes/font_size = 24
+text = "1 VS Komputer"
+
+[node name="Button3" type="Button" parent="CanvasLayer/Control/PlayMenu/Grid"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_o714a")
+theme_override_font_sizes/font_size = 24
+text = "1 VS Komputer"
+
+[node name="Button4" type="Button" parent="CanvasLayer/Control/PlayMenu/Grid"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_o714a")
+theme_override_font_sizes/font_size = 24
+text = "1 VS Komputer"
+
+[node name="Button5" type="Button" parent="CanvasLayer/Control/PlayMenu/Grid"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_o714a")
+theme_override_font_sizes/font_size = 24
+text = "1 VS Komputer"
+
+[connection signal="toggled" from="CanvasLayer/Control/MCont/Hbox/play" to="CanvasLayer/Control" method="_on_play_toggled"]
+[connection signal="pressed" from="CanvasLayer/Control/MCont/Hbox/quit" to="CanvasLayer/Control" method="_on_quit_pressed"]
