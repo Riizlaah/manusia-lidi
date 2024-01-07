@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://c21qd77w4dttg"]
+
+[ext_resource type="Script" path="res://script/char_editor.gd" id="1_0vnoc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gka7q"]
+radius = 20.0
+height = 250.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_6sqee"]
+radius = 45.0
+height = 90.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bcgai"]
+radius = 20.0
+height = 110.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cisli"]
+radius = 20.0
+height = 100.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vyd1e"]
+radius = 20.0
+height = 160.0
+
+[node name="CharEditor" type="Node2D" node_paths=PackedStringArray("mesh_nodes")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_0vnoc")
+mesh_nodes = [NodePath("Body"), NodePath("Body/head"), NodePath("Body/hand/MeshInstance2D"), NodePath("Body/hand/Node2D/MeshInstance2D2"), NodePath("Body/hand2/MeshInstance2D"), NodePath("Body/hand2/Node2D/MeshInstance2D2"), NodePath("Body/foot/MeshInstance2D"), NodePath("Body/foot/Node2D/MeshInstance2D"), NodePath("Body/foot2/MeshInstance2D"), NodePath("Body/foot2/Node2D/MeshInstance2D")]
+
+[node name="Body" type="MeshInstance2D" parent="."]
+mesh = SubResource("CapsuleMesh_gka7q")
+
+[node name="head" type="MeshInstance2D" parent="Body"]
+position = Vector2(0, -146)
+mesh = SubResource("SphereMesh_6sqee")
+
+[node name="hand" type="Node2D" parent="Body"]
+position = Vector2(0, -90)
+rotation = -0.785398
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/hand"]
+position = Vector2(0, 43.5)
+scale = Vector2(1, 1.1)
+mesh = SubResource("CapsuleMesh_bcgai")
+
+[node name="Node2D" type="Node2D" parent="Body/hand"]
+position = Vector2(0, 80)
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Body/hand/Node2D"]
+position = Vector2(0, 40.5)
+scale = Vector2(1, 1.13636)
+mesh = SubResource("CapsuleMesh_bcgai")
+
+[node name="hand2" type="Node2D" parent="Body"]
+position = Vector2(0, -90)
+rotation = 0.785398
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/hand2"]
+position = Vector2(0, 43.5)
+scale = Vector2(1, 1.1)
+mesh = SubResource("CapsuleMesh_bcgai")
+
+[node name="Node2D" type="Node2D" parent="Body/hand2"]
+position = Vector2(0, 80)
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Body/hand2/Node2D"]
+position = Vector2(0, 40.5)
+scale = Vector2(1, 1.13636)
+mesh = SubResource("CapsuleMesh_bcgai")
+
+[node name="foot" type="Node2D" parent="Body"]
+position = Vector2(0, 100)
+rotation = -0.785398
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/foot"]
+position = Vector2(0, 42.9932)
+scale = Vector2(1, 1.12014)
+mesh = SubResource("CapsuleMesh_cisli")
+
+[node name="Node2D" type="Node2D" parent="Body/foot"]
+position = Vector2(0, 80)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/foot/Node2D"]
+position = Vector2(0, 41)
+scale = Vector2(1, 0.775)
+mesh = SubResource("CapsuleMesh_vyd1e")
+
+[node name="foot2" type="Node2D" parent="Body"]
+position = Vector2(0, 100)
+rotation = 0.785398
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/foot2"]
+position = Vector2(0, 42.9932)
+scale = Vector2(1, 1.12014)
+mesh = SubResource("CapsuleMesh_cisli")
+
+[node name="Node2D" type="Node2D" parent="Body/foot2"]
+position = Vector2(0, 80)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/foot2/Node2D"]
+position = Vector2(0, 41)
+scale = Vector2(1, 0.775)
+mesh = SubResource("CapsuleMesh_vyd1e")

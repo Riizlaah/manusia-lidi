@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfaip0jysvvy2"]
+[gd_scene load_steps=23 format=3 uid="uid://cfaip0jysvvy2"]
 
 [ext_resource type="FontFile" uid="uid://tprirob8rlhy" path="res://resources/fonts/RobotoMono-Bold.ttf" id="1_f8ii7"]
 [ext_resource type="Script" path="res://script/menu_ui.gd" id="1_slhug"]
 [ext_resource type="FontFile" uid="uid://c0vx5q7rcvmvu" path="res://resources/fonts/RobotoMono-Regular.ttf" id="2_o714a"]
+[ext_resource type="Script" path="res://script/char_editor_ui.gd" id="4_707tu"]
+[ext_resource type="PackedScene" uid="uid://c21qd77w4dttg" path="res://scene/char_editor.tscn" id="4_d16p5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnc6i"]
 content_margin_left = 20.0
@@ -48,11 +50,137 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwt2f"]
+bg_color = Color(0.247059, 0.247059, 0.247059, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m2tes"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tte0h"]
+bg_color = Color(0.247059, 0.247059, 0.247059, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6xne"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmsny"]
+bg_color = Color(0.278431, 0.513726, 0.184314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nviyp"]
+bg_color = Color(0.219608, 0.411765, 0.141176, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fo66n"]
+bg_color = Color(0.278431, 0.513726, 0.184314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3kgn"]
+bg_color = Color(0.278431, 0.513726, 0.184314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hcp8"]
+bg_color = Color(0.219608, 0.411765, 0.141176, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_gqo1c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer2:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yyro0"]
+resource_name = "play_ui"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer2:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1185, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gxify"]
+resource_name = "when-ready"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tnc1f"]
+_data = {
+"RESET": SubResource("Animation_gqo1c"),
+"play_ui": SubResource("Animation_yyro0"),
+"when-ready": SubResource("Animation_gxify")
+}
+
 [node name="Node" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,7 +230,6 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_rnc6i")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rnc6i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_avpyf")
-toggle_mode = true
 text = "Main"
 
 [node name="quit" type="Button" parent="CanvasLayer/Control/MCont/Hbox"]
@@ -116,75 +243,184 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7yvb6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6188r")
 text = "Keluar"
 
-[node name="PlayMenu" type="ColorRect" parent="CanvasLayer/Control"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
 visible = false
-custom_minimum_size = Vector2(680, 450)
+follow_viewport_enabled = true
+
+[node name="char_editor_ui" type="Control" parent="CanvasLayer2" node_paths=PackedStringArray("char_editor")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_707tu")
+char_editor = NodePath("../../SubViewport/Node2D")
+
+[node name="Hbox" type="HBoxContainer" parent="CanvasLayer2/char_editor_ui"]
+custom_minimum_size = Vector2(950, 550)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -450.0
+offset_top = -250.0
+offset_right = 450.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.223529, 0.223529, 0.223529, 1)
+theme_override_constants/separation = 10
 
-[node name="Grid" type="GridContainer" parent="CanvasLayer/Control/PlayMenu"]
-custom_minimum_size = Vector2(600, 370)
+[node name="Vbox" type="VBoxContainer" parent="CanvasLayer2/char_editor_ui/Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hbox4" type="HBoxContainer" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Hbox" type="HBoxContainer" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_f8ii7")
+theme_override_font_sizes/font_size = 30
+text = "<"
+
+[node name="Label" type="Label" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_f8ii7")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_nwt2f")
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_f8ii7")
+theme_override_font_sizes/font_size = 30
+text = ">"
+
+[node name="Hbox2" type="HBoxContainer" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_f8ii7")
+theme_override_font_sizes/font_size = 30
+text = "<"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox2"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("ViewportTexture_m2tes")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Button2" type="Button" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_f8ii7")
+theme_override_font_sizes/font_size = 30
+text = ">"
+
+[node name="Hbox3" type="HBoxContainer" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_f8ii7")
+theme_override_font_sizes/font_size = 30
+text = "<"
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_f8ii7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_tte0h")
+theme_override_styles/focus = SubResource("StyleBoxFlat_i6xne")
+text = "test"
+placeholder_text = "Nama..."
+alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_f8ii7")
+theme_override_font_sizes/font_size = 30
+text = ">"
+
+[node name="Vbox2" type="VBoxContainer" parent="CanvasLayer2/char_editor_ui/Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="CanvasLayer2/char_editor_ui/Hbox/Vbox2"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_o714a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qmsny")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qmsny")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nviyp")
+text = "Mulai"
+
+[node name="Button" type="Button" parent="CanvasLayer2/char_editor_ui"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -185.0
-offset_right = 300.0
-offset_bottom = 185.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
-columns = 3
-
-[node name="Button" type="Button" parent="CanvasLayer/Control/PlayMenu/Grid"]
-layout_mode = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
 focus_mode = 0
-theme_override_fonts/font = ExtResource("2_o714a")
-theme_override_font_sizes/font_size = 24
-text = "1 VS Komputer"
+theme_override_fonts/font = ExtResource("1_f8ii7")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = SubResource("StyleBoxFlat_fo66n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m3kgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7hcp8")
+text = "<"
 
-[node name="Button2" type="Button" parent="CanvasLayer/Control/PlayMenu/Grid"]
-layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("2_o714a")
-theme_override_font_sizes/font_size = 24
-text = "1 VS Komputer"
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(720, 720)
 
-[node name="Button3" type="Button" parent="CanvasLayer/Control/PlayMenu/Grid"]
-layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("2_o714a")
-theme_override_font_sizes/font_size = 24
-text = "1 VS Komputer"
+[node name="Node2D" parent="SubViewport" instance=ExtResource("4_d16p5")]
+position = Vector2(360, 360)
+scale = Vector2(1, 1)
 
-[node name="Button4" type="Button" parent="CanvasLayer/Control/PlayMenu/Grid"]
-layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("2_o714a")
-theme_override_font_sizes/font_size = 24
-text = "1 VS Komputer"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tnc1f")
+}
 
-[node name="Button5" type="Button" parent="CanvasLayer/Control/PlayMenu/Grid"]
-layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("2_o714a")
-theme_override_font_sizes/font_size = 24
-text = "1 VS Komputer"
-
-[connection signal="toggled" from="CanvasLayer/Control/MCont/Hbox/play" to="CanvasLayer/Control" method="_on_play_toggled"]
+[connection signal="pressed" from="CanvasLayer/Control/MCont/Hbox/play" to="CanvasLayer/Control" method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/MCont/Hbox/quit" to="CanvasLayer/Control" method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox/Button" to="CanvasLayer2/char_editor_ui" method="_on_mnwpn_pressed"]
+[connection signal="pressed" from="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox/Button2" to="CanvasLayer2/char_editor_ui" method="_on_plwpn_pressed"]
+[connection signal="pressed" from="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox2/Button" to="CanvasLayer2/char_editor_ui" method="_on_mnclr_pressed"]
+[connection signal="pressed" from="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox2/Button2" to="CanvasLayer2/char_editor_ui" method="_on_plclr_pressed"]
+[connection signal="pressed" from="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox3/Button" to="CanvasLayer2/char_editor_ui" method="_on_mnchar_pressed"]
+[connection signal="pressed" from="CanvasLayer2/char_editor_ui/Hbox/Vbox/Hbox3/Button2" to="CanvasLayer2/char_editor_ui" method="_on_plchar_pressed"]
+[connection signal="pressed" from="CanvasLayer2/char_editor_ui/Button" to="CanvasLayer/Control" method="_on_close_pressed"]
