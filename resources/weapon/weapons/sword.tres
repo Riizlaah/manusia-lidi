@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=3 format=3 uid="uid://m371o8yglays"]
+
+[ext_resource type="Script" path="res://resources/weapon/BaseWeapon.gd" id="1_ophh4"]
+[ext_resource type="Texture2D" uid="uid://dno2hhpp55l6x" path="res://resources/texture/sword.png" id="2_8otlb"]
+
+[resource]
+script = ExtResource("1_ophh4")
+weapon_name = "Pedang"
+texture = ExtResource("2_8otlb")
+scale = Vector2(0.5, 0.5)
+rot = -90.0
+y = 85.0
+x = -60.0

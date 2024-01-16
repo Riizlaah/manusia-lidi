@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=3 format=3 uid="uid://m7d7aihb6yhf"]
+
+[ext_resource type="Script" path="res://resources/weapon/BaseWeapon.gd" id="1_qldyo"]
+[ext_resource type="Texture2D" uid="uid://dbby6t136wyvm" path="res://resources/texture/ice_cube.png" id="2_o1tau"]
+
+[resource]
+script = ExtResource("1_qldyo")
+weapon_name = "Es Batu"
+texture = ExtResource("2_o1tau")
+scale = Vector2(0.4, 0.4)
+rot = 0.0
+y = 60.0
+x = 0.0

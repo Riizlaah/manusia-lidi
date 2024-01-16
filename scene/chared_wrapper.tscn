@@ -1,0 +1,131 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmu2bxwwjuayp"]
+
+[ext_resource type="Script" path="res://script/char_editor_wrapper.gd" id="1_f6vlr"]
+[ext_resource type="Resource" uid="uid://m371o8yglays" path="res://resources/weapon/weapons/sword.tres" id="2_fqdbc"]
+[ext_resource type="FontFile" uid="uid://tprirob8rlhy" path="res://resources/fonts/RobotoMono-Bold.ttf" id="2_sp3w2"]
+[ext_resource type="PackedScene" uid="uid://c21qd77w4dttg" path="res://scene/char_editor.tscn" id="3_sclh5"]
+[ext_resource type="Resource" uid="uid://daytlyxhcpxw5" path="res://resources/weapon/weapons/stick.tres" id="3_w7moq"]
+[ext_resource type="Resource" uid="uid://blbmf6v2rshq7" path="res://resources/weapon/weapons/spear.tres" id="4_qvii8"]
+[ext_resource type="Resource" uid="uid://m7d7aihb6yhf" path="res://resources/weapon/weapons/ice_cube.tres" id="5_0jqmg"]
+[ext_resource type="Resource" uid="uid://by62qmd0wompv" path="res://resources/weapon/weapons/pistol.tres" id="6_rk1ee"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwt2f"]
+bg_color = Color(0.247059, 0.247059, 0.247059, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m2tes"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Vbox" type="VBoxContainer" node_paths=PackedStringArray("char_editor")]
+offset_right = 210.0
+offset_bottom = 306.0
+size_flags_horizontal = 3
+script = ExtResource("1_f6vlr")
+char_editor = NodePath("SubViewport/CharEditor")
+weapons = Array[Resource("res://resources/weapon/BaseWeapon.gd")]([ExtResource("2_fqdbc"), ExtResource("3_w7moq"), ExtResource("4_qvii8"), ExtResource("5_0jqmg"), ExtResource("6_rk1ee")])
+
+[node name="Hbox4" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Hbox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="MnWpn" type="Button" parent="Hbox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_sp3w2")
+theme_override_font_sizes/font_size = 30
+text = "<"
+
+[node name="Label" type="Label" parent="Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_sp3w2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_nwt2f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlWpn" type="Button" parent="Hbox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_sp3w2")
+theme_override_font_sizes/font_size = 30
+text = ">"
+
+[node name="Hbox2" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MnClr" type="Button" parent="Hbox2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_sp3w2")
+theme_override_font_sizes/font_size = 30
+text = "<"
+
+[node name="TextureRect" type="TextureRect" parent="Hbox2"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("ViewportTexture_m2tes")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PlClr" type="Button" parent="Hbox2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_sp3w2")
+theme_override_font_sizes/font_size = 30
+text = ">"
+
+[node name="Hbox3" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Hbox3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_sp3w2")
+theme_override_font_sizes/font_size = 30
+text = "<"
+
+[node name="Label" type="Label" parent="Hbox3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_sp3w2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_nwt2f")
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="Hbox3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_sp3w2")
+theme_override_font_sizes/font_size = 30
+text = ">"
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(720, 720)
+
+[node name="CharEditor" parent="SubViewport" instance=ExtResource("3_sclh5")]
+position = Vector2(360, 360)
+
+[connection signal="pressed" from="Hbox/MnWpn" to="." method="_on_mnwpn_pressed"]
+[connection signal="pressed" from="Hbox/PlWpn" to="." method="_on_plwpn_pressed"]
+[connection signal="pressed" from="Hbox2/MnClr" to="." method="_on_mnclr_pressed"]
+[connection signal="pressed" from="Hbox2/PlClr" to="." method="_on_plclr_pressed"]

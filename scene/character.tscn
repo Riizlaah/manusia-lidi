@@ -1,0 +1,132 @@
+[gd_scene load_steps=10 format=3 uid="uid://3dtdb3qjxhm8"]
+
+[ext_resource type="Script" path="res://script/character.gd" id="1_ajbft"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_k4se1"]
+radius = 20.0
+height = 250.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_lfddw"]
+radius = 45.0
+height = 90.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mxypv"]
+radius = 20.0
+height = 110.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nhlx0"]
+radius = 20.0
+height = 100.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wmex8"]
+radius = 20.0
+height = 160.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aatxs"]
+radius = 30.0
+height = 360.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5fek"]
+radius = 45.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_28xym"]
+
+[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("meshes")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_ajbft")
+meshes = [NodePath("Body"), NodePath("Body/head"), NodePath("Body/hand/MeshInstance2D"), NodePath("Body/hand/Node2D/MeshInstance2D2"), NodePath("Body/hand2/MeshInstance2D"), NodePath("Body/hand2/Node2D/MeshInstance2D2"), NodePath("Body/foot/MeshInstance2D"), NodePath("Body/foot/Node2D/MeshInstance2D"), NodePath("Body/foot2/MeshInstance2D"), NodePath("Body/foot2/Node2D/MeshInstance2D")]
+
+[node name="Body" type="MeshInstance2D" parent="."]
+mesh = SubResource("CapsuleMesh_k4se1")
+
+[node name="head" type="MeshInstance2D" parent="Body"]
+position = Vector2(0, -146)
+mesh = SubResource("SphereMesh_lfddw")
+
+[node name="hand" type="Node2D" parent="Body"]
+position = Vector2(0, -90)
+rotation = -0.785398
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/hand"]
+position = Vector2(0, 43.5)
+scale = Vector2(1, 1.1)
+mesh = SubResource("CapsuleMesh_mxypv")
+
+[node name="Node2D" type="Node2D" parent="Body/hand"]
+position = Vector2(0, 80)
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Body/hand/Node2D"]
+position = Vector2(0, 40.5)
+scale = Vector2(1, 1.13636)
+mesh = SubResource("CapsuleMesh_mxypv")
+
+[node name="hand2" type="Node2D" parent="Body"]
+position = Vector2(0, -90)
+rotation = 0.785398
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/hand2"]
+position = Vector2(0, 43.5)
+scale = Vector2(1, 1.1)
+mesh = SubResource("CapsuleMesh_mxypv")
+
+[node name="Node2D" type="Node2D" parent="Body/hand2"]
+position = Vector2(0, 80)
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Body/hand2/Node2D"]
+position = Vector2(0, 40.5)
+scale = Vector2(1, 1.13636)
+mesh = SubResource("CapsuleMesh_mxypv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Body/hand2/Node2D"]
+position = Vector2(-60, 85)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="foot" type="Node2D" parent="Body"]
+position = Vector2(0, 100)
+rotation = -0.785398
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/foot"]
+position = Vector2(0, 42.9932)
+scale = Vector2(1, 1.12014)
+mesh = SubResource("CapsuleMesh_nhlx0")
+
+[node name="Node2D" type="Node2D" parent="Body/foot"]
+position = Vector2(0, 80)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/foot/Node2D"]
+position = Vector2(0, 41)
+scale = Vector2(1, 0.775)
+mesh = SubResource("CapsuleMesh_wmex8")
+
+[node name="foot2" type="Node2D" parent="Body"]
+position = Vector2(0, 100)
+rotation = 0.785398
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/foot2"]
+position = Vector2(0, 42.9932)
+scale = Vector2(1, 1.12014)
+mesh = SubResource("CapsuleMesh_nhlx0")
+
+[node name="Node2D" type="Node2D" parent="Body/foot2"]
+position = Vector2(0, 80)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Body/foot2/Node2D"]
+position = Vector2(0, 41)
+scale = Vector2(1, 0.775)
+mesh = SubResource("CapsuleMesh_wmex8")
+
+[node name="Colls" type="CollisionShape2D" parent="."]
+position = Vector2(0, 65)
+shape = SubResource("CapsuleShape2D_aatxs")
+
+[node name="Colls2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -145)
+shape = SubResource("CircleShape2D_u5fek")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
+
+[node name="Colls3" type="CollisionShape2D" parent="."]
+position = Vector2(0, -90)
+shape = SubResource("CapsuleShape2D_28xym")

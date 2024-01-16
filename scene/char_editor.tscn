@@ -68,6 +68,11 @@ position = Vector2(0, 40.5)
 scale = Vector2(1, 1.13636)
 mesh = SubResource("CapsuleMesh_bcgai")
 
+[node name="Sprite2D" type="Sprite2D" parent="Body/hand2/Node2D"]
+position = Vector2(-60, 85)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
 [node name="foot" type="Node2D" parent="Body"]
 position = Vector2(0, 100)
 rotation = -0.785398

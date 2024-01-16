@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=3 format=3 uid="uid://daytlyxhcpxw5"]
+
+[ext_resource type="Script" path="res://resources/weapon/BaseWeapon.gd" id="1_w3qwi"]
+[ext_resource type="Texture2D" uid="uid://b1mmmkn00q3xu" path="res://resources/texture/stick.png" id="2_6laag"]
+
+[resource]
+script = ExtResource("1_w3qwi")
+weapon_name = "Tongkat Sulap"
+texture = ExtResource("2_6laag")
+scale = Vector2(0.5, 0.5)
+rot = -90.0
+y = 85.0
+x = -60.0

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bhgvp7i0p5gj0"]
+
+[ext_resource type="Script" path="res://resources/weapon/BaseWeapon.gd" id="1_7veh2"]
+
+[resource]
+script = ExtResource("1_7veh2")
+scale = Vector2(0, 0)

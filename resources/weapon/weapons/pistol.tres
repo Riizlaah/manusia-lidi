@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=3 format=3 uid="uid://by62qmd0wompv"]
+
+[ext_resource type="Script" path="res://resources/weapon/BaseWeapon.gd" id="1_l3xg7"]
+[ext_resource type="Texture2D" uid="uid://b1pqfifywjhj2" path="res://resources/texture/pistol.png" id="2_65ukr"]
+
+[resource]
+script = ExtResource("1_l3xg7")
+weapon_name = "Pistol"
+texture = ExtResource("2_65ukr")
+scale = Vector2(0.5, 0.5)
+rot = -90.0
+y = 120.0
+x = 0.0
